@@ -1,8 +1,23 @@
 GET http://localhost:8080/devops_starter_war_exploded/api/xxx
 
 ###
-POST http://localhost:8080/devops_starter_war_exploded/api/xxx
+POST http://localhost:8080/devops_starter_war_exploded/api/person
 Content-Type: application/json
 #User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
 
-{"str1": "First Property", "str2": "Second Property"}
+{"name": "Kaj", "age": 23}
+
+
+###
+PUT http://localhost:8080/devops_starter_war_exploded/api/person/update/1
+Content-Type: application/json
+#User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
+
+{"name": "Long", "age": 40}
+
+###
+POST http://localhost:8080/devops_starter_war_exploded/api/employee
+Content-Type: application/json
+#User-Agent: Mozilla/5.0 (platform; rv:geckoversion) Gecko/geckotrail Firefox/firefoxversion
+
+{"name": "Kaj", "address": "kajgade"}
