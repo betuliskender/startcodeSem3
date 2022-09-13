@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.PersonDTO;
 import dtos.RenameMeDTO;
+import errorhandling.PersonNotFoundException;
 import utils.EMF_Creator;
 import facades.PersonFacade;
 import javax.persistence.EntityManagerFactory;
@@ -27,10 +28,25 @@ public class PersonResource {
     }
 
     @GET
+    @Path("/testexception")
+    @Produces("text/plain")
+    public String throwException() throws Exception{
+        throw new Exception("My exception");
+    }
+
+
+    @GET
     @Path("/all")
     @Produces({MediaType.APPLICATION_JSON})
     public Response getAllPersons() {
         return Response.ok().entity(GSON.toJson(FACADE.getAll())).build();
+    }
+
+    @GET
+    @Path("/getbyid/{id}")
+    @Produces({"text/plain"})
+    public Response getById(@PathParam("id") int id) throws PersonNotFoundException {
+        return Response.ok().entity(GSON.toJson(FACADE.getById(id))).build();
     }
 
     @PUT
